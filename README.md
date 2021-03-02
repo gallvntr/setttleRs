@@ -1,4 +1,4 @@
-# setttleRs
+# setttleRs, v0.1
 
 ## Objective: Create a real-time luck metric for each player during a Settlers of Catan simulation. 
 ## Input: 
