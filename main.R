@@ -217,11 +217,12 @@ settlers_sim <- function(num_players = 3, random_seed = 123, num_rolls = 100) {
   return(return_list)
 }
 
-sim_game <- settlers_sim(num_players = 3, random_seed = 123)
+sim_game <- settlers_sim(num_players = 3, random_seed = 123, num_rolls = 100)
 
 ## real-time results
 #sim_game[[1]]
 sim_game$return_prob_dat
 
+## cumulative game results
 #sim_game[[2]]
 sim_game$cuml_dat
