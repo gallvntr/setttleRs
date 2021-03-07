@@ -14,7 +14,9 @@ During each roll, there is an expected probability that a player gets a card, wh
 
 
 ## Example:
+```
 sim_game <- settlers_sim(num_players = 3, random_seed = 123, num_rolls = 100)
+```
 
 ## real-time results for each roll
 ```
