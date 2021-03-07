@@ -210,7 +210,8 @@ settlers_sim <- function(num_players = 3, random_seed = 123, num_rolls = 100) {
     i <- i+1
   }
   ## Create cumulative metric.
-  cuml_dat <- return_prob_dat[, .(log_cuml_obs_over_expect = log(prod(num_cards) / prod(sum_expect_prob))), .(player_id)]
+
+  cuml_dat <- return_prob_dat[, .(log_cuml_obs_over_expect = log(sum(num_cards) / prod(sum_expect_prob))), .(player_id)]
   
   return_list <- list(return_prob_dat, cuml_dat)
   names(return_list) <- c("return_prob_dat", "cuml_dat")
