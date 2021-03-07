@@ -9,11 +9,17 @@
 ## Output: 
 a list with two dataframes. return_prob_dat: dataframe with 6 columns: player_id, sum_expect_prob, num_cards, obs_over_expect, lucky_rel_rank, roll_num;  cuml_dat: a dataframe with two columsn: player_id, log_cuml_obs_over_expect
 
+## Luck metric description:
+During each roll, there is an expected probability that a player gets a card, which is equivalent to the cumulative expected probability of all the hexes on the player's nodes. The observed probability can be boiled down to the number of cards an individual receives each turn. Therefore, a player's luck can be described as observed (# of cards picked up) / cumulative expected probability. We can then calculate how much more lucky someone has by using the player with the worst luck as the reference player and track this probability over time. The probability of multiple independent events occuring is just the multiplication of the probability of each independent event. As a result in the cuml_dat dataframe, we calculate the log_cuml_obs_over_expect as the sum of all resources received / product of all expected probabililities (logged). 
+
+
 ## Example:
 sim_game <- settlers_sim(num_players = 3, random_seed = 123, num_rolls = 100)
 
-## real-time results
+## real-time results for each roll
+```
 sim_game$return_prob_dat
+
      player_id sum_expect_prob num_cards obs_over_expect lucky_rel_rank roll_num
   1: player_id3       0.7500000         2        2.666667              2        0
   2: player_id2       0.6111111         1        1.636364              3        0
@@ -26,13 +32,14 @@ sim_game$return_prob_dat
 199: player_id3       0.7500000         1        1.333333              3      100
 200: player_id2       0.6111111         2        3.272727              1      100
 201: player_id1       0.6666667         1        1.500000              2      100
+```
+## end of game results
 
-
+```
 ## cumulative game results
 sim_game$cuml_dat
     player_id log_cuml_obs_over_expect
 1: player_id3                 28.28561
 2: player_id2                 38.54110
 3: player_id1                 46.57428
-
-During each roll, there is an expected probability that a player gets a card, which is equivalent to the cumulative expected probability of all the hexes on the player's nodes. The probability of multiple independent events occuring is just the multiplication of the probability of each independent event. The observed probability can be boiled down to the number of cards an individual receives each turn. We can then calculate how much more lucky someone has by using the player with the worst luck as the reference player and track this probability over time. 
+```
