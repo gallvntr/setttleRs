@@ -1,6 +1,6 @@
 # setttleRs, v0.1
 
-## Objective: Create a real-time luck metric for each player during a Settlers of Catan simulation. 
+## Objective: Create a luck metric for each player during a Settlers of Catan simulation. Empirically show which players got more lucky in drawing resources compared to their expected probabilities. 
 ## Input: 
 #### num_players: int, must be between 2 to 4, number of players in the game
 #### random_seed: int, use to set random seed
