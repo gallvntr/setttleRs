@@ -7,10 +7,12 @@
 #### num_rolls: int, number of rolls in the game, must be between 10 and 200.
 
 ## Output: 
-a list with two dataframes. return_prob_dat: dataframe with 6 columns: player_id, sum_expect_prob, num_cards, obs_over_expect, lucky_rel_rank, roll_num;  cuml_dat: a dataframe with two columsn: player_id, log_cuml_obs_over_expect
+Two dataframes. return_prob_dat: dataframe with 6 columns: player_id, sum_expect_prob, num_cards, obs_over_expect, lucky_rel_rank, roll_num;  cuml_dat: a dataframe with two columsn: player_id, log_cuml_obs_over_expect
 
 ## Luck metric description:
-During each roll, there is an expected probability that a player gets a card, which is equivalent to the cumulative expected probability of all the hexes on the player's nodes. The observed probability can be boiled down to the number of cards an individual receives each turn. Therefore, a player's luck can be described as observed (# of cards picked up) / cumulative expected probability. We can then calculate how much more lucky someone has by using the player with the worst luck as the reference player and track this probability over time. The probability of multiple independent events occuring is just the multiplication of the probability of each independent event. As a result in the cuml_dat dataframe, we calculate the log_cuml_obs_over_expect as the sum of all resources received / product of all expected probabililities (logged). 
+During each roll, there is an expected probability that a player gets a card, which is equivalent to the cumulative expected probability of all the hexes on the player's nodes. The observed probability can be boiled down to the number of cards an individual receives each turn. Therefore, a player's luck can be described as observed (# of cards picked up) / cumulative expected probability. A player with the higher luck score is luckier because their luck ratio (observed probability / expected probability) is greater. 
+
+We also calculate how much more lucky someone is by using the player with the worst luck as the reference player and tracking this probability over time. The probability of multiple independent events occuring is just the multiplication of the probability of each independent event. In the cuml_dat dataframe, we calculate the log_cuml_obs_over_expect as the sum of all resources received / product of all expected probabililities (logged). 
 
 
 ## Example:
